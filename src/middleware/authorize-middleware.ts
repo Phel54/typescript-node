@@ -1,7 +1,8 @@
 import apiResponse from '../util/apiResponse';
 import {NextFunction, Request, Response,} from 'express';
 
-const authorizeRoles = (...permittedRoles: string[]) => {
+class Authorization {
+  authorizeRoles(...permittedRoles: string[])  {
     return (req:Request, res:Response, next: NextFunction) => {
         const payload:any = req.decoded
         console.log('Payload:', payload)
@@ -19,7 +20,9 @@ const authorizeRoles = (...permittedRoles: string[]) => {
     }
    
 }
+}
 
 
 
-export {authorizeRoles}
+
+export default new Authorization();
