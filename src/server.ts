@@ -1,10 +1,12 @@
-import express, { Application} from 'express';
+import express, { Application, Router} from 'express';
 import 'dotenv/config'
 import morgan from 'morgan';
 import cors from 'cors';
 import mongoSanitize from 'express-mongo-sanitize';
 import helmet from 'helmet';
 import hpp from 'hpp';
+import xss from 'xss-clean';
+
 
 const app: Application = express();
 
@@ -17,6 +19,7 @@ app.use(cors())
 app.use(mongoSanitize()) //Use for security to prevent NoSql injections
 app.use(helmet()) //Adds extra headers to protect the routes
 app.use(hpp()) //To prevent HTTP Parameter Pollution.
+app.use(xss()) //To prevent a harmful script being sent with the POST request
 
 
 /**
@@ -50,6 +53,10 @@ app.get('/', (req, res, next) => {
 })
 import notesRouter from './notes/notes.routes';
 router.use('/note',notesRouter);
+
+import userRouter from './users/users.routes';
+router.use('/users',userRouter);
+
 
 export default app;
 
