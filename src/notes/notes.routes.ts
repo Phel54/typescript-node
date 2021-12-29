@@ -3,6 +3,6 @@ import notesController from './notes.controller';
 const notesRouter = express.Router();
 
 
-notesRouter.route('/notes').post(notesController.createNote);
+notesRouter.route('/create').post(notesController.createNote);
 
 export default notesRouter;

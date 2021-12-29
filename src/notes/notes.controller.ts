@@ -1,7 +1,7 @@
 import notesServices from "./notes.services";
 import INotes from "./notes.interface";
 import {Request, Response} from 'express';
-import apiResponse from '../middleware/apiResponse'
+import apiResponse from '../util/apiResponse'
 
 class NotesController {
 
@@ -9,6 +9,7 @@ class NotesController {
         const notesData: INotes = req.body;
         try {
             const notes = await notesServices.createNote(notesData);
+            return apiResponse.successResponseWithData(res,'Note Created Successfully',notes)
          } catch (error: any) {
         console.log(error)
         return apiResponse.errorResponse(res, error)
