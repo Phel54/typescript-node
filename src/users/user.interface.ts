@@ -13,6 +13,6 @@ export default interface IUsers {
     isActive:boolean,
     resetPasswordToken: String,
     resetPasswordExpires: String,
-    
+    password:string,
 
 }

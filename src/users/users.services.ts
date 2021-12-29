@@ -37,7 +37,7 @@ class UserServices {
         return hashedPassword;
     }
 
-    async signAccessToken(_id:string, email:IUsers)  {
+    async signAccessToken(_id:string, email:string)  {
         const payload = {
             id: _id,
             email: email,       
